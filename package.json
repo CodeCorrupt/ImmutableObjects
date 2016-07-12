@@ -1,5 +1,5 @@
 {
-  "name": "statelist",
+  "name": "immutableobjects",
   "version": "0.0.1",
   "description": "A rewindable immutable js object",
   "main": "app.js",
