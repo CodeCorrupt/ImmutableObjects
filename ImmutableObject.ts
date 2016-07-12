@@ -1,4 +1,4 @@
-export class ImmuteableObject {
+export class ImmutableObject {
   private object: any[];
   private count: number;
 

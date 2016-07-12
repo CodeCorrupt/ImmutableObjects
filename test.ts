@@ -1,6 +1,6 @@
-import {ImmuteableObject} from "./app"
+import {ImmutableObject} from "./ImmutableObject"
 
-var iObj = new ImmuteableObject();
+var iObj = new ImmutableObject();
 
 iObj.obj = 1;
 console.log(iObj.obj);
