@@ -1,27 +1,41 @@
 export class ImmutableObject {
-  private object: any[];
-  private count: number;
+  private back: any[];
+  private forward: any[];
 
   public constructor() {
-    this.object = [];
-    this.count = 0;
+    this.back = [];
+    this.forward = [];
   }
   public get obj():any {
-    if (this.count < 1)
+    if (this.back.length == 0)
       return {};
-    return this.object[this.count - 1];
+    return this.back[this.back.length - 1];
   }
   public set obj(o:any) {
-    this.object.push(o);
-    this.count++;
+    this.back.push(o);
+    this.forward = [];
   }
 
-  public rewind(dist:number):boolean {
-    this.count-=dist;
-    if (this.count < 0)
-    {
-      this.count = 0;
-      return false;
+  public rw(dist:number):boolean {
+    for (var i = 0; i < dist; i++) {
+      var o = this.back.pop()
+      if (o != null){
+        this.forward.push(o);
+      }
+      else
+        return false;
+    }
+    return true;
+  }
+
+  public ff(dist:number):boolean {
+    for (var i = 0; i < dist; i++) {
+      var o = this.forward.pop()
+      if (o != null){
+        this.back.push(o);
+      }
+      else
+        return false;
     }
     return true;
   }
